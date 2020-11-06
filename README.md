@@ -1,5 +1,5 @@
 # FT_PING
-Собственная реализация утилиты ping по проекту ft_ping в школе программирования 21.
+Собственная реализация утилиты traceroute по проекту ft_traceroute в школе программирования 21.
 
 
 ## RUN
@@ -14,7 +14,7 @@ docker-compose run app bash
 ## Inside VM
 ```ruby
 make
-./ft_ping [-v] host
+./ft_traceroute [-v] host
 ```
 
 ## Refs
@@ -23,6 +23,8 @@ make
 *ICMP* - https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol
 
 *Ping* - https://ru.wikipedia.org/wiki/Ping
+
+*Traceroute* - https://en.wikipedia.org/wiki/Traceroute
 
 *Internet protocol checksum* - https://tools.ietf.org/html/rfc1071
 
