@@ -1,0 +1,7 @@
+*.o
+/app/ft_traceroute
+.vscode
+*.dSYM
+Contents
+*.a
+obj
