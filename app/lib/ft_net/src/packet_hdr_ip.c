@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 16:51:03 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/07 17:56:41 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/07 18:08:37 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static uint16_t get_hdr_len(t_packet *packet)
 		return (ICMP_HDR_SIZE);
 }
 
-void	packet_fill_ip(t_packet *packet)
+
 {
 	packet->iphdr.version = 4;
 	packet->iphdr.ihl = IP_HDR_SIZE;
