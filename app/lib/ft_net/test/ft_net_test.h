@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   packet_set_message.c                               :+:      :+:    :+:   */
+/*   ft_net_test.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/07 17:57:26 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/08 17:09:20 by bharrold         ###   ########.fr       */
+/*   Created: 2020/11/08 17:25:52 by bharrold          #+#    #+#             */
+/*   Updated: 2020/11/08 17:47:33 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_net.h"
+#ifndef FT_NET_TEST_H
+# define FT_NET_TEST_H
 
-void		packet_set_message(t_packet *packet, char *message)
-{
-	packet->msg = message;
-	packet->msglen = strlen(message);
-}
+int		testpacket_allocfree();
+int		testpacket_iphdr();
+#endif

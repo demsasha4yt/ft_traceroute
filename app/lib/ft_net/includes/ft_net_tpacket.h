@@ -6,15 +6,14 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 16:12:43 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/07 17:51:08 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/08 17:11:28 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_NET_TPACKET_H
 # define FT_NET_TPACKET_H
 
-# include "ft_traceroute_types.h"
-
+#include "ft_net_types.h"
 
 /*
 ** [t_packet format]:
@@ -34,7 +33,7 @@ typedef struct				s_packet
 	t_sockaddr_in			to;
 	uint8_t					ttl;
 	uint8_t					sequence;
-	uint8_t					*msg;
+	char				*msg;
 	uint16_t				msglen;
 	t_iphdr					iphdr;
 	t_icmphdr				icmphdr;
@@ -42,6 +41,7 @@ typedef struct				s_packet
 	t_tcphdr				tcphdr;
 	t_tcpopts				tcpopts;
 	uint8_t					*buf;
+	uint16_t				buflen;
 }							t_packet;
 
 #endif

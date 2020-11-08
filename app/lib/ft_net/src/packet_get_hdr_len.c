@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   packet_set_message.c                               :+:      :+:    :+:   */
+/*   packet_get_hdr_len.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/07 17:57:26 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/08 17:09:20 by bharrold         ###   ########.fr       */
+/*   Created: 2020/11/08 18:16:37 by bharrold          #+#    #+#             */
+/*   Updated: 2020/11/08 18:16:49 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_net.h"
 
-void		packet_set_message(t_packet *packet, char *message)
+uint16_t packet_get_hdr_len(t_packet *packet)
 {
-	packet->msg = message;
-	packet->msglen = strlen(message);
+	if (packet->type == IPPROTO_UDP)
+		return (UDP_HDR_SIZE);
+	if (packet->type == IPPROTO_ICMP)
+		return (ICMP_HDR_SIZE);
+	return (ICMP_HDR_SIZE);
 }

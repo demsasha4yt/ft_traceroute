@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:46:12 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/07 18:06:43 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/08 18:37:00 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef int 					t_socket;
 # define SOCKET_SEND_ERROR		-2
 # define DEFAULT_TIMEOUT		2000
 # define DEFAULT_TTL			110
-# define DEFAULT_INTERFACE		"eth0"
 
 /*
 ** =========Helpers==========
@@ -48,6 +47,16 @@ typedef int 					t_socket;
 ** net_gettime returns current time in suseconds_t
 */
 suseconds_t			net_gettime(void);
+
+/*
+** print_by_byte prints uint8_t array by byte
+*/
+void				print_by_byte(uint8_t *packet, int size);
+
+/*
+** in_cksum calcs internet cheksum
+*/
+uint16_t			in_cksum(uint8_t *data, size_t length);
 
 /*
 ** packet_create creates new packet with type(IPPROTO_ICMP, IPPROTO_UDP,IPPROTO_TCP etc..)
@@ -89,8 +98,23 @@ void				packet_fill_ip(t_packet *packet);
 /*
 ** packet_set_message set message for packet
 */
-void				packet_set_message(t_packet *packet, uint8_t message);
+void				packet_set_message(t_packet *packet, char *message);
 
+/*
+** packet_get_hdr_len returns packet hdr length
+*/
+uint16_t			packet_get_hdr_len(t_packet *packet);
+
+/*
+** packet_print_debug prints packet structure to screen
+*/
+
+void				packet_print_debug(t_packet *packet);
+/*
+** packet_print_debug prints packet to screen by byte
+*/
+
+void				packet_print_by_byte(uint8_t *packet, int size);
 /*
 **  Sockets ** 
 */
