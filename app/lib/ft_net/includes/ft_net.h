@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:46:12 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/08 18:37:00 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/08 19:05:26 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,30 @@ void				packet_print_debug(t_packet *packet);
 ** packet_print_debug prints packet to screen by byte
 */
 
+/* 
+** calc_icmp_cksum calcs icmp checksum.
+*/
+void	calc_icmp_cksum(t_icmphdr *icmphdr, t_packet *packet, uint16_t offset);
+
+/* 
+** calc_udp_cksum calcs udp checksum.
+*/
+void	calc_udp_cksum(t_udphdr *udphdr, t_packet *packet, uint16_t offset);
+
+/* 
+** calc_tcp_cksum calcs tcp checksum.
+*/
+void	calc_tcp_cksum(t_tcphdr *tcphdr, t_packet *packet, uint16_t offset);
+
 void				packet_print_by_byte(uint8_t *packet, int size);
 /*
 **  Sockets ** 
 */
+
+/* 
+** calc_ip_cksum calcs ip checksum.
+*/
+void	calc_ip_cksum(t_iphdr *iphdr, t_packet *packet);
 
 t_socket			socket_create(int32_t protocol, int32_t hdrincl, int32_t broadcast, int32_t timeout);
 void				socket_close(t_socket socket);

@@ -19,6 +19,7 @@ SRCS =	src/gettime.c \
 		src/packet_get_hdr_len.c \
 		src/packet_debug.c \
 		src/packet_calc.c \
+		src/packet_cksums.c \
 		src/socket_close.c \
 		src/socket_create.c \
 		src/socket_send_row.c \
