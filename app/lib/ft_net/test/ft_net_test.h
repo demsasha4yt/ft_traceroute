@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 17:25:52 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/08 17:47:33 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/08 19:13:57 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 
 int		testpacket_allocfree();
 int		testpacket_iphdr();
+int		testpacket_calc();
 #endif

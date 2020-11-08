@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:46:12 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/08 19:05:26 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/08 19:13:27 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,19 +117,23 @@ void				packet_print_debug(t_packet *packet);
 /* 
 ** calc_icmp_cksum calcs icmp checksum.
 */
-void	calc_icmp_cksum(t_icmphdr *icmphdr, t_packet *packet, uint16_t offset);
+void				calc_icmp_cksum(t_icmphdr *icmphdr, t_packet *packet, uint16_t offset);
 
 /* 
 ** calc_udp_cksum calcs udp checksum.
 */
-void	calc_udp_cksum(t_udphdr *udphdr, t_packet *packet, uint16_t offset);
+void				calc_udp_cksum(t_udphdr *udphdr, t_packet *packet, uint16_t offset);
 
 /* 
 ** calc_tcp_cksum calcs tcp checksum.
 */
-void	calc_tcp_cksum(t_tcphdr *tcphdr, t_packet *packet, uint16_t offset);
+void				calc_tcp_cksum(t_tcphdr *tcphdr, t_packet *packet, uint16_t offset);
 
-void				packet_print_by_byte(uint8_t *packet, int size);
+/*
+**	packet_calc calculate message and checksums
+*/
+int					packet_calc(t_packet *packet, int withip);
+
 /*
 **  Sockets ** 
 */

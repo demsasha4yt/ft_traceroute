@@ -46,6 +46,7 @@ re: fclean all
 TEST_SRCS = test/main.c \
 			test/testpacket_allocfree.c \
 			test/testpacket_iphdr.c \
+			test/testpacket_calc.c \
 
 TEST_OBJS = $(patsubst %.c,%.o, $(TEST_SRCS))
 
