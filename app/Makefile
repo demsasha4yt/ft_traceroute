@@ -16,14 +16,15 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 LDFLAGS = -lm -L./lib/ft_net -lftnet
 
-INCLUDES = -I./lib/ft_net/includes -Iincludes/ 
+INCLUDES = -I./lib/ft_net/includes -I./lib/libft/includes -Iincludes/ 
 
 all: ${NAME}
 
-ft_net:
+libs:
 	make -C ./lib/ft_net
+	make -C ./lib/libft
 
-${NAME}: ft_net ${OBJ}
+${NAME}: libs ${OBJ}
 	@${CC} ${CFLAGS} ${LDFLAGS} ${INCLUDES} -o $@ ${OBJ}
 
 ${OBJDIR}/%.o: ${SRCDIR}/%.c
@@ -32,10 +33,12 @@ ${OBJDIR}/%.o: ${SRCDIR}/%.c
 
 clean:
 	make -C ./lib/ft_net clean
+	make -C ./lib/libft clean
 	@/bin/rm -Rf ${OBJDIR}
 
 fclean: clean
 	make -C ./lib/ft_net fclean
+	make -C ./lib/libft fclean
 	@/bin/rm -f ${NAME}
 	@/bin/rm -Rf ${NAME}.dSYM
 
