@@ -1,6 +1,6 @@
 NAME = ft_traceroute
 
-SRC = main.c genpacket.c in_cksum.c input.c socket.c utils.c
+SRC = main.c
 
 CC = gcc
 
@@ -14,13 +14,16 @@ DEP = $(addprefix ${OBJDIR}/, $(SRC:.c=.d))
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-LDFLAGS = -lm
+LDFLAGS = -lm -L./lib/ft_net -lftnet
 
-INCLUDES = -Iincludes/
+INCLUDES = -I./lib/ft_net/includes -Iincludes/ 
 
 all: ${NAME}
 
-${NAME}: ${OBJ}
+ft_net:
+	make -C ./lib/ft_net
+
+${NAME}: ft_net ${OBJ}
 	@${CC} ${CFLAGS} ${LDFLAGS} ${INCLUDES} -o $@ ${OBJ}
 
 ${OBJDIR}/%.o: ${SRCDIR}/%.c
@@ -28,9 +31,11 @@ ${OBJDIR}/%.o: ${SRCDIR}/%.c
 	${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
 
 clean:
+	make -C ./lib/ft_net clean
 	@/bin/rm -Rf ${OBJDIR}
 
 fclean: clean
+	make -C ./lib/ft_net fclean
 	@/bin/rm -f ${NAME}
 	@/bin/rm -Rf ${NAME}.dSYM
 
