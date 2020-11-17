@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:48:00 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/08 17:11:14 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/16 23:46:11 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_socket			socket_create(int32_t protocol, int32_t hdrincl, int32_t broadcast, i
 		printf("socket() failed : Operation not permitted\n");
 		return (SOCKET_CREATE_ERROR);
 	}
-	if ((setsockopt(sock, IPPROTO_IP, IP_HDRINCL, &hdrincl, sizeof(hdrincl))) < 0) // set flag so socket expects us to provide IPv4 header.
+	if (hdrincl > 0 && (setsockopt(sock, IPPROTO_IP, IP_HDRINCL, &hdrincl, sizeof(hdrincl))) < 0) // set flag so socket expects us to provide IPv4 header.
 	{
 		printf("setsockopt() failed to set IP_HDRINCL\n");
 		socket_close(sock);
@@ -34,9 +34,10 @@ t_socket			socket_create(int32_t protocol, int32_t hdrincl, int32_t broadcast, i
 		socket_close(sock);
 		return (SOCKET_CREATE_ERROR);
 	}
-	if ((socket_settimeout(sock, timeout)) != 1) {
+	if (timeout > 0 && (socket_settimeout(sock, timeout)) != 1) {
 		socket_close(sock);
 		return (SOCKET_CREATE_ERROR);
 	}
+	printf("SOCKER ID: %d\n", sock);
 	return (sock);
 }

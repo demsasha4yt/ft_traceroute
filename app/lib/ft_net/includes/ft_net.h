@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:46:12 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/08 19:13:27 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/16 23:28:46 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,9 @@ uint16_t			packet_get_hdr_len(t_packet *packet);
 
 void				packet_print_debug(t_packet *packet);
 /*
-** packet_print_debug prints packet to screen by byte
+** packet_set_ttl sets ttl to packet;
 */
-
+void				packet_set_ttl(t_packet *packet, uint8_t ttl);
 /* 
 ** calc_icmp_cksum calcs icmp checksum.
 */

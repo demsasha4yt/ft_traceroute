@@ -1,7 +1,6 @@
 NAME = ft_traceroute
 
-SRC = main.c
-
+SRC = main.c input.c errors.c socket.c packet.c probes.c
 CC = gcc
 
 SRCDIR = src
@@ -14,21 +13,21 @@ DEP = $(addprefix ${OBJDIR}/, $(SRC:.c=.d))
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-LDFLAGS = -lm -L./lib/ft_net -lftnet
+LDFLAGS = -lm -L./lib/ft_net -L./lib/libft
 
 INCLUDES = -I./lib/ft_net/includes -I./lib/libft/includes -Iincludes/ 
 
 all: ${NAME}
 
 libs:
-	make -C ./lib/ft_net
-	make -C ./lib/libft
+	@make -C ./lib/ft_net
+	@make -C ./lib/libft
 
 ${NAME}: libs ${OBJ}
-	@${CC} ${CFLAGS} ${LDFLAGS} ${INCLUDES} -o $@ ${OBJ}
+	@${CC} ${CFLAGS} ${LDFLAGS} ${INCLUDES} -o $@ ${OBJ} -lft -lftnet
 
 ${OBJDIR}/%.o: ${SRCDIR}/%.c
-	/bin/mkdir -p ${OBJDIR}
+	@/bin/mkdir -p ${OBJDIR}
 	${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 16:12:43 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/08 17:11:28 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/16 23:25:54 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct				s_packet
 	t_sockaddr_in			to;
 	uint8_t					ttl;
 	uint8_t					sequence;
-	char				*msg;
+	char					*msg;
 	uint16_t				msglen;
 	t_iphdr					iphdr;
 	t_icmphdr				icmphdr;

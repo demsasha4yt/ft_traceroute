@@ -17,6 +17,7 @@ SRCS =	src/gettime.c \
 		src/packet_hdr_udp.c \
 		src/packet_set_message.c \
 		src/packet_get_hdr_len.c \
+		src/packet_set_ttl.c \
 		src/packet_debug.c \
 		src/packet_calc.c \
 		src/packet_cksums.c \
