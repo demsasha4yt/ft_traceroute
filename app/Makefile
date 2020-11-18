@@ -1,6 +1,6 @@
 NAME = ft_traceroute
 
-SRC = main.c input.c errors.c socket.c packet.c probes.c
+SRC = main.c input.c errors.c socket.c packet.c probes.c utils.c
 CC = gcc
 
 SRCDIR = src

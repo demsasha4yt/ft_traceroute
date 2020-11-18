@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:41:33 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/17 23:06:31 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/18 23:10:29 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,6 @@ void					set_ttl(t_socket socket, uint8_t ttl);
 void					send_packet(t_socket socket, int port, uint32_t saddr, t_timeval *tv_send);
 int						read_packet(int sock, t_probe *probe);
 int						run_probes(t_trace *trace, t_probe *probe);
+int						ft_isnumeric(char *str);
+
 #endif

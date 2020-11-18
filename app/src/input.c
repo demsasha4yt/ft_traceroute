@@ -6,41 +6,55 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 22:04:37 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/15 22:30:24 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/18 23:09:54 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_traceroute.h"
 
-// static int		iflag(char *src, uint32_t *dest) 
-// {
-// 	int value;
-// 	if (!ft_isnumeric(src))
-// 		return (1);
-// 	value = ft_atoi(src);
-// 	if (value <= 0 || value >= 255)
-// 		return (1);
-// 	*dest = value;
-// 	return (0);
-// }
+static int		iflag(char *src, int32_t *dest, int min, int max) 
+{
+	int value;
+	if (!ft_isnumeric(src))
+		return (1);
+	value = ft_atoi(src);
+	if (value <= min || value >= max)
+		return (1);
+	*dest = value;
+	return (0);
+}
 
+static int		ui8flag(char *src, uint8_t *dest, int min, int max) 
+{
+	int value;
+	if (!ft_isnumeric(src))
+		return (1);
+	value = (uint8_t)ft_atoi(src);
+	if (value <= min || value >= max)
+		return (1);
+	*dest = value;
+	return (0);
+}
 static int		parse_flags(char ***av, t_trace *trace) 
 {
 	while ((*av)[1] && (*av)[1][0] == '-') {
 		if ((*av)[1][0] == '-' && (*av)[1][1] == 'h')
 			return (1);
-		// else if ((*av)[1][0] == '-' && (*av)[1][1] == 'v')
-		// 	trace->s_vmode = 1;
-		// else if ((*av)[1][0] == '-' && (*av)[1][1] == 'q')
-		// 	trace->s_quite = 1;
-		// else if ((*av)[1][0] == '-' && (*av)[1][1] == 'a')
-		// 	trace->s_audibble = 1;
-		// else if ((*av)[1][0] == '-' && (*av)[1][1] == 'f')
-		// 	trace->s_flood = 1;
-		// else if ((*av)[1][0] == '-' && (*av)[1][1] == 't' && iflag((++(*av))[1], &trace->s_ttl))
-		// 	return (1);
-		// else if ((*av)[1][0] == '-' && (*av)[1][1] == 'i' &&  iflag((++(*av))[1], &trace->s_delay))
-		// 	return (1);
+		else if ((*av)[1][0] == '-' && (*av)[1][1] == 'p' &&
+			iflag((++(*av))[1], &trace->port, 1, 65535))
+			return (1);
+		else if ((*av)[1][0] == '-' && (*av)[1][1] == 'm' && 
+			ui8flag((++(*av))[1], &trace->ttl, 1, 255))
+			return (1);
+		else if ((*av)[1][0] == '-' && (*av)[1][1] == 's' && 
+			ui8flag((++(*av))[1], &trace->ttlst, 1, 255))
+			return (1);
+		else if ((*av)[1][0] == '-' && (*av)[1][1] == 't' && 
+			iflag((++(*av))[1], &trace->timeout, 1, 255))
+			return (1);
+		else if ((*av)[1][0] == '-' && (*av)[1][1] == 'q' && 
+			iflag((++(*av))[1], &trace->probes, 1, 10))
+			return (1);
 		(*av)++;
 		(void)trace;
 	}
@@ -75,7 +89,6 @@ int				parse_input(char **av, t_trace *trace)
 	freeaddrinfo(addrinfo);
 	return (0);
 }
-
 
 int				check_input(int ac, char **av)
 {
