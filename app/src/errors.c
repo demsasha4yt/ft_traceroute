@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 23:57:41 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/19 17:53:25 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/19 18:26:37 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	print_usage(void)
 {
-	dprintf(2, "Usage: ft_traceroute [-h] host\n\n\
+	dprintf(2, "Usage: ft_traceroute [-h] [-p port] [-m max ttl] \
+[-s start ttl] [-t timeout] [-q number of probes] host\n\n\
 Usage: ft_traceroute -h for help\n");
 }
 

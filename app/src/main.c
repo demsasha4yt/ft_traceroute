@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:41:09 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/19 17:51:29 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/19 18:26:03 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void		defaults(t_trace *trace)
 	trace->ttl = 30;
 	trace->ttlst = 1;
 	trace->port = 33434;
-	trace->timeout = 1;
+	trace->timeout = 2;
 	trace->probes = 3;
 	trace->socket = -1;
 	trace->socket_icmp = -1;
