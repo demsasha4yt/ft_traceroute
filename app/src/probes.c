@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 19:00:13 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/18 00:08:03 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/19 17:48:23 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void		defaultprobe(t_trace *trace, t_probe *probe, int probeid)
 static int		select_probe(t_trace *trace, t_probe *probe, int i)
 {
 	FD_SET(trace->socket_icmp, &probe->readfs);
-	probe->ret = select(trace->socket_icmp + 1, &probe->readfs,NULL, NULL,
+	probe->ret = select(trace->socket_icmp + 1, &probe->readfs, NULL, NULL,
 		&probe->tv_select);
 	if (probe->ret < 0)
 		return (1);
@@ -45,7 +45,7 @@ static int		select_probe(t_trace *trace, t_probe *probe, int i)
 	return (0);
 }
 
-int			run_probes(t_trace *trace, t_probe *probe)
+int				run_probes(t_trace *trace, t_probe *probe)
 {
 	int				i;
 	int				ret;

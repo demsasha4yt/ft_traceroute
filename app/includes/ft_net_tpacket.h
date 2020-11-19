@@ -6,14 +6,14 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 16:12:43 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/16 23:25:54 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/19 18:05:08 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_NET_TPACKET_H
 # define FT_NET_TPACKET_H
 
-#include "ft_net_types.h"
+# include "ft_net_types.h"
 
 /*
 ** [t_packet format]:
@@ -38,8 +38,6 @@ typedef struct				s_packet
 	t_iphdr					iphdr;
 	t_icmphdr				icmphdr;
 	t_udphdr				udphdr;
-	t_tcphdr				tcphdr;
-	t_tcpopts				tcpopts;
 	uint8_t					*buf;
 	uint16_t				buflen;
 }							t_packet;

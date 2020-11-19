@@ -6,15 +6,16 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 22:04:37 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/18 23:09:54 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/19 17:40:05 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_traceroute.h"
 
-static int		iflag(char *src, int32_t *dest, int min, int max) 
+static int		iflag(char *src, int32_t *dest, int min, int max)
 {
-	int value;
+	int	value;
+
 	if (!ft_isnumeric(src))
 		return (1);
 	value = ft_atoi(src);
@@ -24,9 +25,10 @@ static int		iflag(char *src, int32_t *dest, int min, int max)
 	return (0);
 }
 
-static int		ui8flag(char *src, uint8_t *dest, int min, int max) 
+static int		ui8flag(char *src, uint8_t *dest, int min, int max)
 {
-	int value;
+	int	value;
+
 	if (!ft_isnumeric(src))
 		return (1);
 	value = (uint8_t)ft_atoi(src);
@@ -35,24 +37,26 @@ static int		ui8flag(char *src, uint8_t *dest, int min, int max)
 	*dest = value;
 	return (0);
 }
-static int		parse_flags(char ***av, t_trace *trace) 
+
+static int		parse_flags(char ***av, t_trace *trace)
 {
-	while ((*av)[1] && (*av)[1][0] == '-') {
+	while ((*av)[1] && (*av)[1][0] == '-')
+	{
 		if ((*av)[1][0] == '-' && (*av)[1][1] == 'h')
 			return (1);
 		else if ((*av)[1][0] == '-' && (*av)[1][1] == 'p' &&
 			iflag((++(*av))[1], &trace->port, 1, 65535))
 			return (1);
-		else if ((*av)[1][0] == '-' && (*av)[1][1] == 'm' && 
+		else if ((*av)[1][0] == '-' && (*av)[1][1] == 'm' &&
 			ui8flag((++(*av))[1], &trace->ttl, 1, 255))
 			return (1);
-		else if ((*av)[1][0] == '-' && (*av)[1][1] == 's' && 
+		else if ((*av)[1][0] == '-' && (*av)[1][1] == 's' &&
 			ui8flag((++(*av))[1], &trace->ttlst, 1, 255))
 			return (1);
-		else if ((*av)[1][0] == '-' && (*av)[1][1] == 't' && 
+		else if ((*av)[1][0] == '-' && (*av)[1][1] == 't' &&
 			iflag((++(*av))[1], &trace->timeout, 1, 255))
 			return (1);
-		else if ((*av)[1][0] == '-' && (*av)[1][1] == 'q' && 
+		else if ((*av)[1][0] == '-' && (*av)[1][1] == 'q' &&
 			iflag((++(*av))[1], &trace->probes, 1, 10))
 			return (1);
 		(*av)++;
@@ -78,7 +82,6 @@ int				parse_input(char **av, t_trace *trace)
 		print_error(USAGE_ERROR);
 		return (USAGE_ERROR);
 	}
-		
 	if (getaddrinfo(av[1], NULL, &hints, &addrinfo))
 	{
 		dprintf(2, "ft_traceroute: Can't resolve host %s\n", av[1]);

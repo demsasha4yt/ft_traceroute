@@ -1,4 +1,4 @@
-	/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:41:09 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/17 01:04:36 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/19 17:51:29 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		mainloop(t_trace *trace)
 	int		ret;
 	t_probe	probe;
 
-	while(trace->ttlst <= trace->ttl)
+	while (trace->ttlst <= trace->ttl)
 	{
 		set_ttl(trace->socket, trace->ttlst);
 		ret = run_probes(trace, &probe);
@@ -40,9 +40,10 @@ static void		defaults(t_trace *trace)
 	trace->socket_icmp = -1;
 }
 
-int				main (int argc, char **argv) 
+int				main(int argc, char **argv)
 {
-	t_trace	trace;
+	t_trace		trace;
+
 	defaults(&trace);
 	if (check_input(argc, argv))
 	{

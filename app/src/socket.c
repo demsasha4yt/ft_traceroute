@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 23:47:24 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/18 00:06:20 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/19 17:56:53 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_socket	init_socket(int domain, int type, int protocol)
 {
 	t_socket sock;
-	
+
 	sock = socket(domain, type, protocol);
 	if (sock < 0)
 		perror("socket");

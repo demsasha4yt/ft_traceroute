@@ -13,31 +13,22 @@ DEP = $(addprefix ${OBJDIR}/, $(SRC:.c=.d))
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-LDFLAGS = -lm -L./lib/ft_net -L./lib/libft
+LDFLAGS = -lm 
 
-INCLUDES = -I./lib/ft_net/includes -I./lib/libft/includes -Iincludes/ 
+INCLUDES = -Iincludes/ 
 
 all: ${NAME}
 
-libs:
-	@make -C ./lib/ft_net
-	@make -C ./lib/libft
-
-${NAME}: libs ${OBJ}
-	@${CC} ${CFLAGS} ${LDFLAGS} ${INCLUDES} -o $@ ${OBJ} -lft -lftnet
-
+${NAME}: ${OBJ}
+	@${CC} ${CFLAGS} ${LDFLAGS} ${INCLUDES} -o $@ ${OBJ}
 ${OBJDIR}/%.o: ${SRCDIR}/%.c
 	@/bin/mkdir -p ${OBJDIR}
 	${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
 
 clean:
-	make -C ./lib/ft_net clean
-	make -C ./lib/libft clean
 	@/bin/rm -Rf ${OBJDIR}
 
 fclean: clean
-	make -C ./lib/ft_net fclean
-	make -C ./lib/libft fclean
 	@/bin/rm -f ${NAME}
 	@/bin/rm -Rf ${NAME}.dSYM
 

@@ -6,16 +6,17 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 00:39:39 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/18 00:06:18 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/19 17:44:27 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_traceroute.h"
 
-void				send_packet(t_socket socket, int port, uint32_t saddr, t_timeval *tv_send)
+void				send_packet(t_socket socket, int port,
+	uint32_t saddr, t_timeval *tv_send)
 {
-	char	packet[60];
-	t_sockaddr_in sin;
+	char			packet[60];
+	t_sockaddr_in	sin;
 
 	sin.sin_family = AF_INET;
 	sin.sin_port = htons(port);
@@ -44,9 +45,9 @@ int					read_packet(int sock, t_probe *probe)
 {
 	int		ret;
 	void	*ptr;
-	
+
 	memset(&probe->buf, 0, 512);
-	if ((ret = recvfrom(sock, &probe->buf, 512, 0, 
+	if ((ret = recvfrom(sock, &probe->buf, 512, 0,
 		(struct sockaddr*)&probe->from, &probe->fromlen)) > 0)
 	{
 		ptr = (void*)probe->buf;
@@ -59,7 +60,7 @@ int					read_packet(int sock, t_probe *probe)
 				hostname((t_in_addr*)&(probe->iphdr->saddr),
 					(char*)(&probe->host)));
 		printf(" %.3f ms", probe->tv_delta);
-		return(probe->icmphdr->icmp__type);
+		return (probe->icmphdr->icmp__type);
 	}
 	return (-1);
 }

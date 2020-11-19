@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:43:58 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/16 22:58:50 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/19 18:06:38 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 #   define __BIG_ENDIAN_BITFIELD
 #  endif
 # endif
-
 
 # define IP_HDR_SIZE 20
 # define ICMP_HDR_SIZE 8
@@ -56,14 +55,19 @@ typedef struct iovec		t_iovec;
 */
 typedef struct				s_iphdr {
 # if defined(__LITTLE_ENDIAN_BITFIELD)
-	uint8_t					ihl:4,
-							version:4;
+
+	uint16_t				ihl:4;
+	uint16_t				version:4;
+
 # elif defined (__BIG_ENDIAN_BITFIELD)
-	uint8_t					version:4,
-							ihl:4;
+
+	uint8_t					version:4;
+	uint8_t					ihl:4;
+
 # else
-#  error  "Adjust your <asm/byteorder.h> for linux or <architecture/byte_order.h> for apple defines"
-#endif
+#  error "Adjust your <asm/byteorder.h> or <architecture/byte_order.h> defines"
+# endif
+
 	uint8_t					tos;
 	uint16_t				tot_len;
 	uint16_t				id;
@@ -97,7 +101,6 @@ typedef struct				s_icmphdr
 	suseconds_t				icmp__timestamp;
 }							t_icmphdr;
 
-
 /*
 ** [t_udphdr format]:
 ** source port
@@ -110,57 +113,14 @@ typedef struct				s_udphdr
 	uint16_t				udp_srcport;
 	uint16_t				udp_dstport;
 	uint16_t				udp_len;
-	uint16_t				udp_cksum; 	
+	uint16_t				udp_cksum;
 }							t_udphdr;
 
-/*
-** [t_tcphdr format]:
-*/
-typedef struct				s_tcphdr
+typedef struct				s_flag
 {
-	uint16_t				tcp_srcport;
-	uint16_t				tcp_dstport;
-	uint16_t				tcp_sequence;
-	uint16_t				tcp_ackseq;
-# if defined(__LITTLE_ENDIAN_BITFIELD)
-	uint16_t  				res1:4,
-							offset:4,
-							fin:1,
-							syn:1,
-							rst:1,
-							psh:1,
-							ack:1,
-							urg:1,
-							ece:1,
-							cwr:1;
-# elif defined(__BIG_ENDIAN_BITFIELD)
-    uint16_t   				offset:4,
-							res1:4,
-							cwr:1,
-							ece:1,
-							urg:1,
-							ack:1,
-							psh:1,
-							rst:1,
-							syn:1,
-							fin:1;
-# else
-#  error  "Adjust your <asm/byteorder.h> for linux or <architecture/byte_order.h> for apple defines"
-# endif  
-	uint16_t				tcp_cksum;
-	uint16_t				tcp_utpoint;
-}							t_tcphdr;
-
-typedef struct				s_tcpopts
-{
-
-}							t_tcpopts;
-
-typedef struct		s_flag
-{
-	char			*flag;
-	char			*value;
-	struct s_flag	*next;
-}					t_flag;
+	char					*flag;
+	char					*value;
+	struct s_flag			*next;
+}							t_flag;
 
 #endif
