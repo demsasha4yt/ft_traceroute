@@ -14,7 +14,9 @@ docker-compose run app bash
 ## Inside VM
 ```ruby
 make
-./ft_traceroute [-v] host
+./ft_traceroute [-h] [-p port] [-m max ttl] \
+[-s start ttl] [-t timeout] [-q number of probes] host\n\n\
+Usage: ft_traceroute -h for help\n"
 ```
 
 ## Refs
