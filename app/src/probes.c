@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 19:00:13 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/19 18:22:05 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/28 17:17:29 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		defaultprobe(t_trace *trace, t_probe *probe, int probeid)
 {
-	memset(probe, 0, sizeof(t_probe));
+	ft_memset(probe, 0, sizeof(t_probe));
 	probe->probe = probeid;
 	probe->ttl = trace->ttlst;
 	probe->tv_select.tv_sec = (long)trace->timeout;
