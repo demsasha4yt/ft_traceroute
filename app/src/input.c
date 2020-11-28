@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 22:04:37 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/19 18:24:25 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/28 17:19:33 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int				parse_input(char **av, t_trace *trace)
 	t_addrinfo	hints;
 	t_addrinfo	*addrinfo;
 
-	memset(&hints, 0, sizeof(hints));
+	ft_memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_INET;
 	if (parse_flags(&av, trace))
 	{
