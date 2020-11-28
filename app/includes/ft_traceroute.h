@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:41:33 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/19 17:44:38 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/28 17:46:35 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct			s_probe
 	socklen_t			fromlen;
 	uint8_t				buf[512];
 	char				host[INET_ADDRSTRLEN + 1];
+	uint32_t			old_saddr;
 }						t_probe;
 
 typedef struct			s_trace

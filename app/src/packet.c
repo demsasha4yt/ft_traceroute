@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 00:39:39 by bharrold          #+#    #+#             */
-/*   Updated: 2020/11/28 17:17:17 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/11/28 17:54:17 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,12 @@ int					read_packet(int sock, t_probe *probe)
 			printf("%2d  %s ", probe->ttl,
 				hostname((t_in_addr*)&(probe->iphdr->saddr),
 					(char*)(&probe->host)));
-		printf(" %.3f ms", probe->tv_delta);
+		if (probe->probe == 0 || probe->old_saddr == probe->iphdr->saddr)
+			printf(" %.3f ms", probe->tv_delta);
+		else
+			printf(" (%s) %.3f ms", hostname((t_in_addr*)&(probe->iphdr->saddr),
+				(char*)(&probe->host)), probe->tv_delta);
+		probe->old_saddr = probe->iphdr->saddr;
 		return (probe->icmphdr->icmp__type);
 	}
 	return (-1);
